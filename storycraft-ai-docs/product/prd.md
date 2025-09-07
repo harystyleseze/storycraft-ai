@@ -1,6 +1,6 @@
-# 📄 Product Requirements Document (PRD) — FINAL
+# 📄 Product Requirements Document (PRD)
 
-**Product Name:** *StoryCraft AI*
+**Product Name:** _StoryCraft AI_
 **Version:** 1.0 (MVP)
 **Date:** September 7, 2025
 **Author:** ChatGPT
@@ -21,11 +21,11 @@
 
 ### 🧰 Target Users
 
-* Creative hobbyists
-* Children (with adult supervision)
-* Educators and parents
-* Storytellers & YouTubers
-* Non-writers who want to tell stories
+- Creative hobbyists
+- Children (with adult supervision)
+- Educators and parents
+- Storytellers & YouTubers
+- Non-writers who want to tell stories
 
 ---
 
@@ -34,10 +34,10 @@
 | Feature               | Description                                  |
 | --------------------- | -------------------------------------------- |
 | ✍️ Text input         | Type a short idea or phrase                  |
-| 🎙️ Voice input       | Record story idea (voice-to-text)            |
+| 🎙️ Voice input        | Record story idea (voice-to-text)            |
 | 🧠 AI story expansion | LLM builds structured story (intro → ending) |
-| 🎞️ Scene generation  | Break story into 4–6 visual beats            |
-| 🖼️ Image generation  | Each beat → Gemini Flash or SDXL image       |
+| 🎞️ Scene generation   | Break story into 4–6 visual beats            |
+| 🖼️ Image generation   | Each beat → Gemini Flash or SDXL image       |
 | 🔊 Narration          | AI TTS of full story (via ElevenLabs)        |
 | 🎬 Video generation   | Combine narration + images (ffmpeg or Fal)   |
 | 👤 User auth          | Sign up/login via Supabase                   |
@@ -138,9 +138,9 @@
 
 ### Examples:
 
-* `/components/VoiceRecorder.tsx`: Records mic input (client only)
-* `/lib/storyBuilder.ts`: GPT prompt logic (server only)
-* `/lib/supabase.ts`: Shared Supabase client
+- `/components/VoiceRecorder.tsx`: Records mic input (client only)
+- `/lib/storyBuilder.ts`: GPT prompt logic (server only)
+- `/lib/supabase.ts`: Shared Supabase client
 
 ---
 
@@ -250,57 +250,57 @@ Returns final video file URL + metadata
 
 ### 🧑 `users`
 
-| Field       | Type      |
-| ----------- | --------- |
-| id          | UUID      |
-| email       | TEXT      |
-| created\_at | TIMESTAMP |
+| Field      | Type      |
+| ---------- | --------- |
+| id         | UUID      |
+| email      | TEXT      |
+| created_at | TIMESTAMP |
 
 ---
 
 ### 📖 `stories`
 
-| Field       | Type      |
-| ----------- | --------- |
-| id          | UUID      |
-| user\_id    | UUID      |
-| idea        | TEXT      |
-| full\_story | JSONB     |
-| created\_at | TIMESTAMP |
+| Field      | Type      |
+| ---------- | --------- |
+| id         | UUID      |
+| user_id    | UUID      |
+| idea       | TEXT      |
+| full_story | JSONB     |
+| created_at | TIMESTAMP |
 
 ---
 
 ### 🖼️ `scenes`
 
-| Field        | Type    |
-| ------------ | ------- |
-| id           | UUID    |
-| story\_id    | UUID    |
-| prompt       | TEXT    |
-| image\_url   | TEXT    |
-| scene\_index | INTEGER |
+| Field       | Type    |
+| ----------- | ------- |
+| id          | UUID    |
+| story_id    | UUID    |
+| prompt      | TEXT    |
+| image_url   | TEXT    |
+| scene_index | INTEGER |
 
 ---
 
 ### 🔊 `narrations`
 
-| Field      | Type |
-| ---------- | ---- |
-| id         | UUID |
-| story\_id  | UUID |
-| audio\_url | TEXT |
-| voice\_id  | TEXT |
+| Field     | Type |
+| --------- | ---- |
+| id        | UUID |
+| story_id  | UUID |
+| audio_url | TEXT |
+| voice_id  | TEXT |
 
 ---
 
 ### 🎥 `videos`
 
-| Field       | Type      |
-| ----------- | --------- |
-| id          | UUID      |
-| story\_id   | UUID      |
-| video\_url  | TEXT      |
-| created\_at | TIMESTAMP |
+| Field      | Type      |
+| ---------- | --------- |
+| id         | UUID      |
+| story_id   | UUID      |
+| video_url  | TEXT      |
+| created_at | TIMESTAMP |
 
 ---
 
@@ -335,9 +335,7 @@ Target: **5 scenes = 60 seconds**
 ```ts
 const totalAudioDuration = getDuration(audioUrl);
 const sceneDuration = totalAudioDuration / imageUrls.length;
-
 ```
-
 
 for (let i = 0; i < imageUrls.length; i++) {
 ffmpeg.input(imageUrls\[i])
@@ -371,3 +369,4 @@ ffmpeg.input(imageUrls\[i])
 
 This PRD is beginner-friendly, modular, scalable, and production-ready. The architecture properly separates **client vs server logic**, and uses the most modern web dev tools (Next.js App Router, Supabase, Gemini, ElevenLabs).
 
+```
