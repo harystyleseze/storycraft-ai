@@ -12,17 +12,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
 
+
   useEffect(() => {
     // Get initial session
     const getInitialSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      
-      if (session?.user) {
-        setUser(session.user as AuthUser)
-        await fetchProfile(session.user.id)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        
+        if (session?.user) {
+          setUser(session.user as AuthUser)
+          // Fetch profile in background, don't wait for it
+          fetchProfile(session.user.id)
+        }
+      } catch (error) {
+        console.error('Error getting session:', error)
+      } finally {
+        setLoading(false)
       }
-      
-      setLoading(false)
     }
 
     getInitialSession()
@@ -30,9 +36,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        
         if (session?.user) {
           setUser(session.user as AuthUser)
-          await fetchProfile(session.user.id)
+          // Fetch profile in background, don't wait for it
+          fetchProfile(session.user.id)
         } else {
           setUser(null)
           setProfile(null)
@@ -71,7 +79,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         options: {
           data: {
             full_name: fullName,
-          }
+          },
+          emailRedirectTo: `${window.location.origin}/auth/callback?type=signup`
         }
       })
 
@@ -109,10 +118,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInWithGoogle = async () => {
     try {
+      const redirectTo = `${window.location.origin}/auth/callback?next=/dashboard`
+      console.log('Google OAuth redirect URL:', redirectTo)
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`
+          redirectTo,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent'
+          }
         }
       })
 
@@ -130,6 +146,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const { error } = await supabase.auth.signOut()
       
+      if (error) {
+        return { error: error.message }
+      }
+
+      // Clear local state immediately
+      setUser(null)
+      setProfile(null)
+
+      return {}
+    } catch (error) {
+      return { error: 'An unexpected error occurred' }
+    }
+  }
+
+  const forgotPassword = async (email: string) => {
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/reset-password`
+      })
+
       if (error) {
         return { error: error.message }
       }
@@ -192,6 +228,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signIn,
     signInWithGoogle,
     signOut,
+    forgotPassword,
     updateProfile,
   }
 

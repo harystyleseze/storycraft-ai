@@ -96,7 +96,7 @@ export function HowItWorks() {
   }
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-br from-slate-50 to-purple-50/20">
+    <section id="how-it-works" className="py-24 bg-gradient-to-br from-slate-50 to-purple-50/20 dark:from-slate-900 dark:to-purple-950/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -106,17 +106,17 @@ export function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 text-purple-700">
+          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
             <Brain className="w-4 h-4 mr-2" />
             Simple Process
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6">
             From Idea to Video in{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               6 Easy Steps
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             No technical skills required. No complex editing. Just your creativity and our AI doing the heavy lifting.
           </p>
         </motion.div>
@@ -149,14 +149,14 @@ export function HowItWorks() {
                     {!isEven && <div className="hidden lg:block flex-1" />}
                   </div>
                   
-                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                  <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                     {step.description}
                   </p>
-                  <div className={`inline-block px-4 py-2 rounded-xl bg-gradient-to-r ${step.bgColor} border border-slate-200`}>
-                    <span className="text-sm font-medium text-slate-700 italic">
+                  <div className={`inline-block px-4 py-2 rounded-xl bg-gradient-to-r ${step.bgColor} dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-600`}>
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 italic">
                       {step.example}
                     </span>
                   </div>
@@ -167,7 +167,7 @@ export function HowItWorks() {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    className={`relative w-64 h-64 rounded-3xl bg-gradient-to-br ${step.bgColor} border-2 border-white shadow-xl flex items-center justify-center overflow-hidden`}
+                    className={`relative w-64 h-64 rounded-3xl bg-gradient-to-br ${step.bgColor} dark:from-slate-800 dark:to-slate-700 border-2 border-white dark:border-slate-600 shadow-xl flex items-center justify-center overflow-hidden`}
                   >
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-10">
@@ -208,8 +208,8 @@ export function HowItWorks() {
                     viewport={{ once: true }}
                     className="absolute left-1/2 transform -translate-x-1/2 mt-80 lg:mt-0 lg:left-auto lg:right-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-1/2"
                   >
-                    <div className="p-3 bg-white rounded-full shadow-lg border-2 border-slate-200">
-                      <ArrowRight className="w-6 h-6 text-purple-600 lg:rotate-0 rotate-90" />
+                    <div className="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg border-2 border-slate-200 dark:border-slate-600">
+                      <ArrowRight className="w-6 h-6 text-purple-600 dark:text-purple-400 lg:rotate-0 rotate-90" />
                     </div>
                   </motion.div>
                 )}

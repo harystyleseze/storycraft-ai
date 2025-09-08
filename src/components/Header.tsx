@@ -15,6 +15,7 @@ export function Header() {
   const { theme, toggleTheme } = useTheme()
   const router = useRouter()
 
+
   const toggleMenu = () => setIsOpen(!isOpen)
 
   const handleSignOut = () => {

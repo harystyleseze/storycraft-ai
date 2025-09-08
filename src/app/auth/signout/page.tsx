@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAuth } from '@/contexts/AuthContext'
 
-export default function SignOutPage() {
+function SignOutContent() {
   const [status, setStatus] = useState<'signing-out' | 'success' | 'error'>('signing-out')
   const [error, setError] = useState<string | null>(null)
   
@@ -163,5 +163,20 @@ export default function SignOutPage() {
         </Card>
       </motion.div>
     </div>
+  )
+}
+
+export default function SignOutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-purple-50/20 dark:from-slate-900 dark:to-purple-950/20">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="text-lg text-slate-600 dark:text-slate-300">Loading...</div>
+        </div>
+      </div>
+    }>
+      <SignOutContent />
+    </Suspense>
   )
 }

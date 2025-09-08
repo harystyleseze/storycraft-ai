@@ -86,7 +86,7 @@ export function Features() {
   }
 
   return (
-    <section id="features" className="py-24 bg-white">
+    <section id="features" className="py-24 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -96,17 +96,17 @@ export function Features() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 text-purple-700">
+          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
             <Sparkles className="w-4 h-4 mr-2" />
             Powerful Features
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6">
             Everything You Need to{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Create Magic
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             From idea to finished video in minutes. Our AI-powered platform handles every step of the creative process.
           </p>
         </motion.div>
@@ -130,22 +130,22 @@ export function Features() {
                   transition: { duration: 0.2, ease: [0.0, 0.0, 0.2, 1.0] as any }
                 }}
               >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-slate-50/50">
+                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-slate-50/50 dark:from-slate-800 dark:to-slate-800/50">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-4">
                       <div className={`p-3 rounded-xl bg-gradient-to-r ${feature.color} text-white shadow-lg`}>
                         <IconComponent className="w-6 h-6" />
                       </div>
-                      <Badge variant="secondary" className="bg-white/80 text-slate-700 text-xs">
+                      <Badge variant="secondary" className="bg-white/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 text-xs">
                         {feature.badge}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl font-semibold text-slate-900">
+                    <CardTitle className="text-xl font-semibold text-slate-900 dark:text-slate-100">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-slate-600 leading-relaxed">
+                    <CardDescription className="text-slate-600 dark:text-slate-300 leading-relaxed">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -163,26 +163,26 @@ export function Features() {
           viewport={{ once: true }}
           className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl">
+          <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950 rounded-2xl">
             <div className="text-3xl font-bold text-purple-600 mb-2">
               <Clock className="w-8 h-8 mx-auto mb-2" />
               45s
             </div>
-            <div className="text-slate-600">Average creation time</div>
+            <div className="text-slate-600 dark:text-slate-400">Average creation time</div>
           </div>
-          <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl">
+          <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-2xl">
             <div className="text-3xl font-bold text-blue-600 mb-2">
               <Zap className="w-8 h-8 mx-auto mb-2" />
               10k+
             </div>
-            <div className="text-slate-600">Stories created daily</div>
+            <div className="text-slate-600 dark:text-slate-400">Stories created daily</div>
           </div>
-          <div className="text-center p-6 bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl">
+          <div className="text-center p-6 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950 dark:to-green-950 rounded-2xl">
             <div className="text-3xl font-bold text-emerald-600 mb-2">
               <Sparkles className="w-8 h-8 mx-auto mb-2" />
               4.9/5
             </div>
-            <div className="text-slate-600">User satisfaction</div>
+            <div className="text-slate-600 dark:text-slate-400">User satisfaction</div>
           </div>
         </motion.div>
       </div>

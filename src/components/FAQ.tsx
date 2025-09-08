@@ -78,7 +78,7 @@ export function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-24 bg-gradient-to-br from-slate-50 to-purple-50/20">
+    <section id="faq" className="py-24 bg-gradient-to-br from-slate-50 to-purple-50/20 dark:from-slate-900 dark:to-purple-950/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -88,17 +88,17 @@ export function FAQ() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 text-purple-700">
+          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
             <HelpCircle className="w-4 h-4 mr-2" />
             Got Questions?
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6">
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Questions
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Everything you need to know about creating magical video stories with AI.
           </p>
         </motion.div>
@@ -109,7 +109,7 @@ export function FAQ() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden"
+          className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden"
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => {
@@ -118,20 +118,20 @@ export function FAQ() {
                 <motion.div key={index} variants={itemVariants}>
                   <AccordionItem 
                     value={`item-${index}`} 
-                    className="border-b border-slate-100 last:border-b-0"
+                    className="border-b border-slate-100 dark:border-slate-700 last:border-b-0"
                   >
-                    <AccordionTrigger className="px-6 py-6 hover:no-underline hover:bg-slate-50/50 transition-colors">
+                    <AccordionTrigger className="px-6 py-6 hover:no-underline hover:bg-slate-50/50 dark:hover:bg-slate-700/50 transition-colors">
                       <div className="flex items-center space-x-4 text-left">
-                        <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-2 rounded-lg flex-shrink-0">
-                          <IconComponent className="w-5 h-5 text-purple-600" />
+                        <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 p-2 rounded-lg flex-shrink-0">
+                          <IconComponent className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                         </div>
-                        <span className="font-semibold text-slate-900 text-lg">
+                        <span className="font-semibold text-slate-900 dark:text-slate-100 text-lg">
                           {faq.question}
                         </span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="px-6 pb-6">
-                      <div className="ml-16 text-slate-600 leading-relaxed text-base">
+                      <div className="ml-16 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
                         {faq.answer}
                       </div>
                     </AccordionContent>
@@ -150,24 +150,24 @@ export function FAQ() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-3">
               Still have questions?
             </h3>
-            <p className="text-slate-300 mb-6">
+            <p className="text-slate-300 dark:text-slate-400 mb-6">
               Our support team is here to help you create amazing stories.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
                 href="mailto:support@storycraftai.com" 
-                className="text-purple-400 hover:text-purple-300 font-medium transition-colors"
+                className="text-purple-400 dark:text-purple-300 hover:text-purple-300 dark:hover:text-purple-200 font-medium transition-colors"
               >
                 support@storycraftai.com
               </a>
-              <span className="hidden sm:block text-slate-500">•</span>
+              <span className="hidden sm:block text-slate-500 dark:text-slate-400">•</span>
               <a 
                 href="#" 
-                className="text-purple-400 hover:text-purple-300 font-medium transition-colors"
+                className="text-purple-400 dark:text-purple-300 hover:text-purple-300 dark:hover:text-purple-200 font-medium transition-colors"
               >
                 Live Chat Support
               </a>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAuth } from '@/contexts/AuthContext'
 
-export default function SignUpPage() {
+function SignUpContent() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -222,6 +222,7 @@ export default function SignUpPage() {
                     value={formData.fullName}
                     onChange={handleInputChange}
                     className="pl-10"
+                    autoComplete="name"
                     required
                     disabled={loading}
                   />
@@ -240,6 +241,7 @@ export default function SignUpPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="pl-10"
+                    autoComplete="email"
                     required
                     disabled={loading}
                   />
@@ -258,6 +260,7 @@ export default function SignUpPage() {
                     value={formData.password}
                     onChange={handleInputChange}
                     className="pl-10 pr-10"
+                    autoComplete="new-password"
                     required
                     disabled={loading}
                     minLength={6}
@@ -285,6 +288,7 @@ export default function SignUpPage() {
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
                     className="pl-10 pr-10"
+                    autoComplete="new-password"
                     required
                     disabled={loading}
                   />
@@ -343,5 +347,20 @@ export default function SignUpPage() {
         </Card>
       </motion.div>
     </div>
+  )
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-purple-50/20 dark:from-slate-900 dark:to-purple-950/20">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="text-lg text-slate-600 dark:text-slate-300">Loading...</div>
+        </div>
+      </div>
+    }>
+      <SignUpContent />
+    </Suspense>
   )
 }

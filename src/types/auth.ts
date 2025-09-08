@@ -24,5 +24,6 @@ export interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error?: string }>
   signInWithGoogle: () => Promise<{ error?: string }>
   signOut: () => Promise<{ error?: string }>
+  forgotPassword: (email: string) => Promise<{ error?: string }>
   updateProfile: (updates: Partial<Profile>) => Promise<{ error?: string }>
 }

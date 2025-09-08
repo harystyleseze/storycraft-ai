@@ -88,9 +88,9 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white">
       {/* Newsletter Section */}
-      <div className="border-b border-slate-800">
+      <div className="border-b border-slate-800 dark:border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -103,21 +103,22 @@ export function Footer() {
               <Mail className="w-8 h-8" />
             </div>
             <h3 className="text-3xl font-bold mb-4">Stay in the Loop</h3>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-300 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
               Get the latest updates on new features, AI improvements, and creative inspiration delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                autoComplete="email"
+                className="flex-1 px-4 py-3 rounded-lg bg-slate-800 dark:bg-slate-900 border border-slate-700 dark:border-slate-600 text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
               <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-3 group">
                 Subscribe
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
-            <p className="text-sm text-slate-400 mt-4">
+            <p className="text-sm text-slate-400 dark:text-slate-500 mt-4">
               No spam, unsubscribe at any time. We respect your privacy.
             </p>
           </motion.div>
@@ -143,7 +144,7 @@ export function Footer() {
                 StoryCraft AI
               </span>
             </div>
-            <p className="text-slate-300 mb-6 leading-relaxed">
+            <p className="text-slate-300 dark:text-slate-400 mb-6 leading-relaxed">
               Empowering everyone to transform their imagination into beautiful, shareable stories. 
               No technical skills required—just your creativity and our AI.
             </p>
@@ -156,7 +157,7 @@ export function Footer() {
                     href={social.href}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                    className="w-10 h-10 bg-slate-800 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-white hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
                     aria-label={social.label}
                   >
                     <IconComponent className="w-5 h-5" />
@@ -173,7 +174,7 @@ export function Footer() {
               variants={itemVariants}
               className="lg:col-span-1"
             >
-              <h4 className="text-lg font-semibold text-white mb-4">{section.title}</h4>
+              <h4 className="text-lg font-semibold text-white dark:text-slate-100 mb-4">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <motion.li
@@ -185,7 +186,7 @@ export function Footer() {
                   >
                     <a
                       href={link.href}
-                      className="text-slate-400 hover:text-white transition-colors duration-200 relative group"
+                      className="text-slate-400 dark:text-slate-500 hover:text-white dark:hover:text-slate-200 transition-colors duration-200 relative group"
                     >
                       {link.label}
                       <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-full"></span>
@@ -199,7 +200,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-slate-800 dark:border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,7 +209,7 @@ export function Footer() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
           >
-            <div className="flex items-center space-x-4 text-sm text-slate-400">
+            <div className="flex items-center space-x-4 text-sm text-slate-400 dark:text-slate-500">
               <span>© 2024 StoryCraft AI. All rights reserved.</span>
               <span className="hidden md:block">•</span>
               <span className="flex items-center">
@@ -216,13 +217,13 @@ export function Footer() {
               </span>
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <a href="#status" className="text-slate-400 hover:text-white transition-colors">
+              <a href="#status" className="text-slate-400 dark:text-slate-500 hover:text-white dark:hover:text-slate-200 transition-colors">
                 System Status
               </a>
-              <span className="text-slate-600">•</span>
+              <span className="text-slate-600 dark:text-slate-500">•</span>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-slate-400">All systems operational</span>
+                <span className="text-slate-400 dark:text-slate-500">All systems operational</span>
               </div>
             </div>
           </motion.div>

@@ -25,7 +25,7 @@ An AI-powered video storytelling platform built with Next.js, TypeScript, Tailwi
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Supabase account
 - OpenAI API key (for AI features)
@@ -34,34 +34,40 @@ An AI-powered video storytelling platform built with Next.js, TypeScript, Tailwi
 ### Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/harystyleseze/storycraft-ai
    cd storycraft-ai
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.local.example .env.local
    ```
-   
+
    Fill in your environment variables in `.env.local`:
+
    - Supabase URL and keys
    - OpenAI API key
    - ElevenLabs API key
    - Database connection string
 
 4. Set up the database:
+
    ```bash
    # Run the schema.sql file in your Supabase SQL editor
    # Or use your preferred PostgreSQL client
    ```
 
 5. Run the development server:
+
    ```bash
    npm run dev
    ```
@@ -92,6 +98,7 @@ src/
 ## API Endpoints
 
 ### Projects
+
 - `GET /api/projects` - Get user projects
 - `POST /api/projects` - Create new project
 - `GET /api/projects/[id]` - Get specific project
@@ -99,9 +106,11 @@ src/
 - `DELETE /api/projects/[id]` - Delete project
 
 ### Video Assembly
+
 - `POST /api/video-assembly` - Start video generation process
 
 ### Authentication
+
 - `POST /api/auth` - Handle signup/signin
 
 ## Database Schema

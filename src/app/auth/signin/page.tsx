@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAuth } from '@/contexts/AuthContext'
 
-export default function SignInPage() {
+function SignInContent() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -23,11 +23,13 @@ export default function SignInPage() {
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get('redirect') || '/'
   const message = searchParams.get('message')
+  const oauthError = searchParams.get('error')
+  const errorDetails = searchParams.get('details')
 
   // Redirect if already signed in
   useEffect(() => {
     if (user) {
-      router.push(redirectTo)
+      router.push(redirectTo === '/' ? '/dashboard' : redirectTo)
     }
   }, [user, router, redirectTo])
 
@@ -41,7 +43,7 @@ export default function SignInPage() {
       if (result.error) {
         setError(result.error)
       } else {
-        router.push(redirectTo)
+        router.push(redirectTo === '/' ? '/dashboard' : redirectTo)
       }
     } catch (err) {
       setError('An unexpected error occurred')
@@ -112,6 +114,38 @@ export default function SignInPage() {
               </div>
             )}
 
+            {/* Show OAuth error */}
+            {oauthError && (
+              <div className="p-3 rounded-lg bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-800">
+                <div className="flex items-center">
+                  <AlertCircle className="w-4 h-4 text-orange-600 dark:text-orange-400 mr-2" />
+                  <div className="flex-1">
+                    <p className="text-sm text-orange-800 dark:text-orange-200">
+                      {oauthError === 'access_denied' ? 
+                        'Sign-in was cancelled. Please try again.' :
+                      oauthError === 'account_exists' ?
+                        'An account with this email already exists. Please sign in with your email and password instead.' :
+                      oauthError === 'oauth_provider_error' ?
+                        'There was an issue with Google sign-in. Please try again or use email sign-in.' :
+                      oauthError === 'email_not_confirmed' ?
+                        'Please check your email and click the confirmation link first.' :
+                      oauthError === 'oauth_session_error' ?
+                        'There was an issue creating your session. Please try again.' :
+                      oauthError === 'no_auth_code' ?
+                        'No authorization code received. Please try signing in again.' :
+                        'OAuth sign-in was interrupted. Please try again.'
+                      }
+                    </p>
+                    {errorDetails && (
+                      <p className="text-xs text-orange-600 dark:text-orange-400 mt-1 font-mono">
+                        {decodeURIComponent(errorDetails)}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Google Sign In */}
             <Button
               type="button"
@@ -153,6 +187,7 @@ export default function SignInPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10"
+                    autoComplete="email"
                     required
                     disabled={loading}
                   />
@@ -171,6 +206,7 @@ export default function SignInPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="pl-10 pr-10"
+                    autoComplete="current-password"
                     required
                     disabled={loading}
                   />
@@ -225,5 +261,20 @@ export default function SignInPage() {
         </Card>
       </motion.div>
     </div>
+  )
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-purple-50/20 dark:from-slate-900 dark:to-purple-950/20">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="text-lg text-slate-600 dark:text-slate-300">Loading...</div>
+        </div>
+      </div>
+    }>
+      <SignInContent />
+    </Suspense>
   )
 }

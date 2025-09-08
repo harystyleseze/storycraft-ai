@@ -88,7 +88,7 @@ export function Testimonials() {
           <Star
             key={i}
             className={`w-4 h-4 ${
-              i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+              i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300 dark:text-gray-600'
             }`}
           />
         ))}
@@ -98,18 +98,18 @@ export function Testimonials() {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      Education: "bg-blue-100 text-blue-700",
-      Creator: "bg-purple-100 text-purple-700",
-      Family: "bg-green-100 text-green-700",
-      YouTube: "bg-red-100 text-red-700",
-      Business: "bg-orange-100 text-orange-700",
-      Author: "bg-indigo-100 text-indigo-700"
+      Education: "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300",
+      Creator: "bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300",
+      Family: "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300",
+      YouTube: "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300",
+      Business: "bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300",
+      Author: "bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300"
     }
-    return colors[category] || "bg-gray-100 text-gray-700"
+    return colors[category] || "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
   }
 
   return (
-    <section id="testimonials" className="py-24 bg-white">
+    <section id="testimonials" className="py-24 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -119,17 +119,17 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 text-purple-700">
+          <Badge variant="secondary" className="mb-4 text-sm py-2 px-4 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
             <Heart className="w-4 h-4 mr-2" />
             Loved by Creators
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6">
             What Our Users{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Are Saying
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Join thousands of happy creators, educators, and storytellers who have transformed their ideas into magical videos.
           </p>
         </motion.div>
@@ -144,19 +144,19 @@ export function Testimonials() {
         >
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">10,000+</div>
-            <div className="text-slate-600">Stories Created</div>
+            <div className="text-slate-600 dark:text-slate-400">Stories Created</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">4.9★</div>
-            <div className="text-slate-600">Average Rating</div>
+            <div className="text-slate-600 dark:text-slate-400">Average Rating</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">98%</div>
-            <div className="text-slate-600">Satisfaction Rate</div>
+            <div className="text-slate-600 dark:text-slate-400">Satisfaction Rate</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">45s</div>
-            <div className="text-slate-600">Avg. Creation Time</div>
+            <div className="text-slate-600 dark:text-slate-400">Avg. Creation Time</div>
           </div>
         </motion.div>
 
@@ -177,9 +177,9 @@ export function Testimonials() {
                 transition: { duration: 0.2, ease: [0.0, 0.0, 0.2, 1.0] as any }
               }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-slate-50/50 relative overflow-hidden">
+              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-slate-50/50 dark:from-slate-800 dark:to-slate-800/50 relative overflow-hidden">
                 {/* Quote Icon */}
-                <div className="absolute top-4 right-4 text-purple-200">
+                <div className="absolute top-4 right-4 text-purple-200 dark:text-purple-700">
                   <Quote className="w-8 h-8" />
                 </div>
                 
@@ -189,8 +189,8 @@ export function Testimonials() {
                     <div className="flex items-center space-x-3">
                       <div className="text-2xl">{testimonial.avatar}</div>
                       <div>
-                        <h4 className="font-semibold text-slate-900">{testimonial.name}</h4>
-                        <p className="text-sm text-slate-600">{testimonial.role}</p>
+                        <h4 className="font-semibold text-slate-900 dark:text-slate-100">{testimonial.name}</h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">{testimonial.role}</p>
                       </div>
                     </div>
                     <Badge className={`text-xs ${getCategoryColor(testimonial.category)}`}>
@@ -204,12 +204,12 @@ export function Testimonials() {
                   </div>
 
                   {/* Content */}
-                  <blockquote className="text-slate-700 leading-relaxed flex-grow">
+                  <blockquote className="text-slate-700 dark:text-slate-300 leading-relaxed flex-grow">
                     &ldquo;{testimonial.content}&rdquo;
                   </blockquote>
 
                   {/* Decorative Element */}
-                  <div className="mt-4 flex items-center text-purple-500">
+                  <div className="mt-4 flex items-center text-purple-500 dark:text-purple-400">
                     <Zap className="w-4 h-4 mr-2" />
                     <span className="text-xs font-medium">Verified User</span>
                   </div>
@@ -227,13 +227,13 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <p className="text-slate-500 mb-8">Trusted by creators from</p>
+          <p className="text-slate-500 dark:text-slate-400 mb-8">Trusted by creators from</p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-            <div className="text-2xl font-bold text-slate-400">YouTube</div>
-            <div className="text-2xl font-bold text-slate-400">TikTok</div>
-            <div className="text-2xl font-bold text-slate-400">Instagram</div>
-            <div className="text-2xl font-bold text-slate-400">LinkedIn</div>
-            <div className="text-2xl font-bold text-slate-400">Twitter</div>
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-500">YouTube</div>
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-500">TikTok</div>
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-500">Instagram</div>
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-500">LinkedIn</div>
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-500">Twitter</div>
           </div>
         </motion.div>
       </div>
