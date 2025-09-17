@@ -51,12 +51,19 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-sans;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
   html {
     scroll-behavior: smooth;
+    font-family: var(--font-poppins), Poppins, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+  p, span, div, a, button, input, textarea, select {
+    @apply font-sans;
   }
 }
